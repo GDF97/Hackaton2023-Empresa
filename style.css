@@ -5,7 +5,76 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+a,ul,li{
+    text-decoration: none;
+    list-style: none;
+}
 
+/**Navbar**/
+
+.header{
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(0, 128, 0, 0.411);
+}
+
+.header__logo{
+    font-size: 2rem;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.icon__logo{
+    width: 45px;
+    height: 45px;
+}
+
+.navbar__menu{
+    display: flex;
+    gap: 5rem;
+}
+
+.menu__links{
+    font-size: 1.2rem;
+}
+
+.btn__Links{
+    position: relative;
+    color: white;
+}
+
+
+.btn__Links::before{
+    content: '';
+    position: absolute;
+    width: 20%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: white;
+    transition: .5s;
+}
+
+.btn__Links:hover::before{
+    width: 100%;
+}
+
+.btn-mobile{
+    display: none;
+}
+
+/**Fim da Navbar**/
+
+
+/**Landing Page**/
 .home{
     width: 100%;
     height: 100vh;
@@ -19,18 +88,21 @@
     background-size: cover;
 }
 
-#logo{
+.logo{
     width: 25rem;
     height: 25rem;
-    outline: 1px solid black;
     border-radius: 50%;
+    background-image: url(icon/icon1.png);
+    background-position: center;
+    background-size: cover;
 }
 
-#title{
+.title{
     font-size: 6rem;
+    color: green;
 }
 
-#sobre{
+.sobre{
     width: 80ch;
     text-align: center;
     font-size: 1.1rem;
@@ -45,66 +117,114 @@
     letter-spacing: .2rem;
     padding: 1rem 3rem;
     transition: all .3s ease-in-out;
+    border-radius: 50px;
 }
 
 .btn:hover{
     transform: scale(1.1);
 }
 
-.quem-somos{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 4REM;
+/**Fim Landing Page**/
+
+@media (max-width: 800px) {
+    .sobre{
+        width: auto;
+    }
+
+    .btn-mobile{
+        display: flex;
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        background: none;
+        font-size: 1rem;
+        cursor: pointer;
+        color: white;
+        gap: .5em;
+    }
+
+    #hamb{
+        border-top: 2px solid;
+        width: 20px;
+    }
+
+    #hamb::after,#hamb::before{
+        content: '';
+        display: block;
+        position: relative;
+        width: 20px;
+        height: 2px;
+        margin-top: 5px;
+        background-color: currentColor;
+        transition: .3s;
+        
+    }
+
+    .navbar__menu{
+        position: absolute;
+        width: 40%;
+        top: 60px;
+        right: 0;
+        display: block;
+        height: 0;
+        transition: .6s;
+        z-index: 1000;
+        visibility: hidden;
+        overflow-y: hidden;
+        background-color: rgba(0, 128, 0, 0.411);
+        transition: 1s;
+    }
+
+    .navbar__menu > li{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1rem;
+    }
+
+    .header__navbar.active .navbar__menu{
+        visibility: visible;
+        overflow-y: auto;
+        height: 20vh;
+        
+    }
+
+    .header__navbar.active #hamb{
+        border-top-color: transparent;
+    }
+    .header__navbar.active #hamb::before{
+        transform: rotate(135deg);
+    }
+    .header__navbar.active #hamb::after{
+        transform: rotate(-135deg);
+        top: -7px;
+        
+    }
 }
 
-.quem-somos h1{
-    font-size: 5rem;
-}
+@media (max-width: 600px){
+    .title{
+        font-size: 3rem;
+    }
+    .logo{
+        width: 15rem;
+        height: 15rem;
+    }
+    .header__logo{
+        font-size: 1.5rem;
+        color: white;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .5rem;
+    }
+    
+    .icon__logo{
+        width: 35px;
+        height: 35px;
+    }
 
-.gallery-wrapper{
-    width: 80%;
-    height: 65%;
-    overflow-x: auto;
-    display: flex;
-    align-items: center;
-}
-
-
-.gallery{
-    padding: 1rem;
-    display: flex;
-    flex-flow: row nowrap;
-    gap: 1rem;
-}
-
-.card-profile{
-    width: 350px;
-    height: 450px;
-    outline: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    gap: .5rem;
-}
-
-#frame{
-    display: flex;
-    width: 250px;
-    height: 300px;
-    background-image: url(img/pombo.jpg);
-    background-size: cover;
-    background-position: center;
-}
-
-#nome{
-    font-size: 3rem;
-}
-
-#serie{
-    font-size: 1rem;
+    .home{
+        gap: 1rem;
+    }
 }
