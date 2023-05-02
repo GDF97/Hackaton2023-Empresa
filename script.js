@@ -1,4 +1,4 @@
-const btnLinks = document.querySelectorAll('.btn-quem-somos');
+const btnLinks = document.querySelectorAll('.somos');
 
 function getDistanceFromTheTop(element) {
     const id = element.getAttribute("href");
@@ -42,3 +42,7 @@ btnLinks.forEach((link) => {
     }, 1000 / 60);
   }
   
+  function toggleMenu(){
+    const nav = document.querySelector('.header__navbar');
+    nav.classList.toggle('active');
+}
